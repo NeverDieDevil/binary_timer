@@ -1,0 +1,19 @@
+.clock {
+  display: flex;
+  height: 200px;
+  width: 600px;
+}
+.sek,
+.mili {
+  width: 50%;
+}
+div div div {
+  width: 100%;
+  height: 10%;
+  background-color: rgb(99, 33, 33);
+  border: 1px solid black;
+}
+
+.bg-color {
+  background-color: blue;
+}
