@@ -1,19 +1,60 @@
-.clock {
+body{
+  height:600px;
   display: flex;
-  height: 200px;
-  width: 600px;
-}
-.sek,
-.mili {
-  width: 50%;
-}
-div div div {
-  width: 100%;
-  height: 10%;
-  background-color: rgb(99, 33, 33);
-  border: 1px solid black;
+  justify-content: center;
+  background-color: black;
+  align-items: center;
 }
 
-.bg-color {
-  background-color: blue;
+.clock{
+  color: white;
+  display: flex;
+  justify-content:center;   
+  height: 300px;
+  width: 700px;
+}
+.hour, .sek, .mili{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    transform: matrix(-1, 0, 0, -1, 0, 0);
+    padding: 0 20px;
+}
+div div div{
+    width: 10%;
+    height: 10%;
+    margin: 8px 8px;
+}
+
+.bg-color{
+    background-color: blue;
+}
+
+.point{
+  width: 50px;
+  height: 50px;
+  border-radius: 90px;
+  filter: blur(2px);
+}
+
+.point-inactive{
+
+  background-color: #233c63;
+
+}
+.point-active{
+  background-color: #316ac4;
+  box-shadow: 0px 0px 30px #0560f2;
+}
+
+@media screen and (max-width: 600px) {
+  .point{
+  width: 40px;
+  height: 40px;
+  }
+  .clock{ 
+  height: 250px;
+}
 }

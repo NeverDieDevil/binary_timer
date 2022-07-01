@@ -1,53 +1,36 @@
-const body = document.querySelector('body');
-const secCounterGraf = document.querySelectorAll('.mili div');
-const minCounterGraf = document.querySelectorAll('.sek div');
-const btn = document.querySelector('button');
-let secCounter = 0;
-let minCounter = 0;
-const clock = document.createElement('h1');
-let sek;
-let min;
-body.append(clock);
+const secCounterGraf = document.querySelectorAll(".mili div");
+const minCounterGraf = document.querySelectorAll(".sek div");
+const hourCounterGraf = document.querySelectorAll(".hour div");
 
 function count() {
-  if (secCounter >= 60) {
-    secCounter = 0;
-    minCounter++;
-  }
-
-  secCounter++;
-  sek = secCounter.toString(2).padStart(10, 0).split('');
-  min = minCounter.toString(2).padStart(10, 0).split('');
+    let time = new Date();
+    let hour = time.getHours().toString(2).padStart(6, 0).split("").reverse();
+    let min = time.getMinutes().toString(2).padStart(7, 0).split("").reverse();
+    let sec = time.getSeconds().toString(2).padStart(7, 0).split("").reverse();
   secCounterGraf.forEach((div, id) => {
-    if (sek[id] === '1') {
-      div.classList.add('bg-color');
+    if (sec[id] === "1") {
+      div.classList.replace('point-inactive','point-active');
     } else {
-      div.classList.remove('bg-color');
+      div.classList.replace('point-active','point-inactive');
     }
   });
   minCounterGraf.forEach((div, id) => {
-    if (min[id] === '1') {
-      div.classList.add('bg-color');
+    if (min[id] === "1") {
+      div.classList.replace('point-inactive','point-active');
     } else {
-      div.classList.remove('bg-color');
+      div.classList.replace('point-active','point-inactive');
     }
   });
-  clock.textContent = `${min.join('')}:${sek.join('')}`;
-}
-let running = false;
-let intId;
-function app() {
-  if (!running) {
-    running = true;
-    intId = setInterval(count, 1000);
-    console.log(intId);
-  } else {
-    running = false;
-    clearInterval(intId);
-  }
-  console.log(running);
-}
 
-btn.addEventListener('click', () => {
-  app();
-});
+    hourCounterGraf.forEach((div, id) => {
+    if (hour[id] === "1") {
+      div.classList.replace('point-inactive','point-active');
+    } else {
+      div.classList.replace('point-active','point-inactive');
+    }
+  });
+}
+function app() {
+  setInterval(count, 1000);
+}
+app();
